@@ -1,4 +1,4 @@
-FROM wurstmeister/storm:1.0.2
+FROM wurstmeister/storm
 MAINTAINER Wurstmeister
 RUN /usr/bin/config-supervisord.sh ui
 
