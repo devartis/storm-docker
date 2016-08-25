@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker build -t="wurstmeister/storm" storm
-docker build -t="wurstmeister/storm-nimbus" storm-nimbus
-docker build -t="wurstmeister/storm-supervisor" storm-supervisor
-docker build -t="wurstmeister/storm-ui" storm-ui
+docker build -t="devartis/storm:1.0.2" storm
+docker build -t="devartis/storm-nimbus:1.0.2" storm-nimbus
+docker build -t="devartis/storm-supervisor:1.0.2" storm-supervisor
+docker build -t="devartis/storm-ui:1.0.2" storm-ui

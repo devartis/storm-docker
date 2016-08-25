@@ -1,6 +1,6 @@
 FROM wurstmeister/base
 
-MAINTAINER Wurstmeister 
+MAINTAINER devartis
 
 RUN wget -q -O - http://mirrors.sonic.net/apache/storm/apache-storm-1.0.2/apache-storm-1.0.2.tar.gz | tar -xzf - -C /opt
 

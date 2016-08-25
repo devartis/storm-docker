@@ -1,5 +1,6 @@
-FROM wurstmeister/storm
-MAINTAINER Wurstmeister
+FROM devartis/storm:1.0.2
+
+MAINTAINER devartis
 
 EXPOSE 6700
 EXPOSE 6701
