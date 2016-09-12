@@ -22,3 +22,5 @@ drpc.servers:
 drpc.port: 3772
 drpc.invocations.port: 3773
 storm.local.hostname: "%hostname%"
+nimbus.thrift.max_buffer_size: 16777216
+nimbus.thrift.max_buffer_size: 16777216
