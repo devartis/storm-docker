@@ -9,6 +9,29 @@ The images are available directly from [https://index.docker.io](https://index.d
 
 - install docker-compose [http://docs.docker.com/compose/install/](http://docs.docker.com/compose/install/)
 
+Quick steps for Ubuntu:
+
+    $ sudo apt-get update
+    $ sudo apt-get install apt-transport-https ca-certificates
+    $ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+    $ echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" | sudo tee -a /etc/apt/sources.list.d/docker.list
+    $ sudo apt-get update
+    $ sudo apt-get purge lxc-docker
+    $ sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+    $ sudo apt-get install docker-engine
+    $ sudo service docker start
+    $ sudo docker run hello-world
+    $ sudo curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    $ sudo chmod +x /usr/local/bin/docker-compose
+
+Or:
+
+    $ sudo apt install docker.io
+    $ sudo apt install docker-compose
+    $ sudo gpasswd -a ${USER} docker
+    $ newgrp docker
+    $ sudo service docker restart
+
 ##Usage
 
 Start a cluster:
@@ -23,9 +46,17 @@ Add more supervisors:
 
 - ```docker-compose scale supervisor=3```
 
+Run each container without docker-compose:
+
+- ```docker run -d -p 2181:2181 -p 22 wurstmeister/zookeeper```
+- ```docker run -d -p 3773:3773 -p 3772:3772 -p 6627:6627 -p 22 -e ZK_PORT_2181_TCP_ADDR=10.2.0.4 devartis/storm-nimbus:1.0.2```
+- ```docker run -d -p 8080:8080 -p 22 -e ZK_PORT_2181_TCP_ADDR=10.2.0.4 -e NIMBUS_PORT_6627_TCP_ADDR=10.2.0.4  devartis/storm-ui:1.0.2```
+- ```docker run -d -p 8000:8000 -p 22 -e ZK_PORT_2181_TCP_ADDR=10.2.0.4 -e NIMBUS_PORT_6627_TCP_ADDR=10.2.0.4  devartis/storm-supervisor:1.0.2```
+
 ##Building
 
 - ```rebuild.sh```
+
 
 ##FAQ
 ### How can I access Storm UI from my host?
